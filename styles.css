@@ -10,9 +10,8 @@ body {
     color: #fff; /* Cor da fonte agora é branco */
     text-align: center;
     padding: 0;
-    overflow: hidden; /* Evitar que o conteúdo ultrapasse a tela */
     position: relative;
-    height: 100vh;
+    height: 100vh; /* Impede que a tela ultrapasse o tamanho da janela */
 }
 
 .container {
@@ -21,13 +20,13 @@ body {
     width: 100%;
     max-width: 800px;
     margin: 0 auto;
-    padding-top: 100px; /* Distância do topo */
+    padding-top: 30px; /* Distância do topo para dispositivos móveis */
 }
 
 .title {
-    font-size: 3.2em; /* Tamanho maior para o título */
+    font-size: 1em; /* Ajuste do título para ser mais legível em dispositivos móveis */
     color: #fff;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
     text-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
     letter-spacing: 2px;
 }
@@ -35,27 +34,33 @@ body {
 .photo-container {
     display: flex;
     justify-content: center;
-    gap: 50px; /* Espaço entre as divs de foto */
-    margin-bottom: 30px;
+    gap: 20px; /* Espaçamento entre as imagens em dispositivos móveis */
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Permite que as fotos se ajustem em dispositivos pequenos */
 }
 
 .photo-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex: 1 1 100%; /* Cada foto ocupa toda a largura disponível */
+    max-width: 100%; /* Limita a largura das fotos */
+    margin: 0 5px; /* Margem reduzida */
 }
 
 .photo {
-    width: 300px;
-    height: 200px;
+    width: 150px;  /* Largura fixa para as imagens */
+    height: 150px; /* Altura fixa para as imagens */
     overflow: hidden;
     position: relative;
+    border-radius: 15px; /* Bordas arredondadas para um efeito mais suave */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Adicionando sombra para dar profundidade */
 }
 
 .photo img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Garante que as imagens cubram o espaço sem distorcer */
     transition: transform 0.3s ease; /* Transição suave ao passar o mouse */
 }
 
@@ -72,7 +77,7 @@ body {
 }
 
 .timer {
-    font-size: 2em; /* Tamanho maior para o timer */
+    font-size: 1em; /* Ajuste do tamanho do timer para dispositivos móveis */
     margin-top: 20px;
     font-weight: bold;
     color: #ffffff;
@@ -80,7 +85,7 @@ body {
 }
 
 .timer p {
-    margin: 15px 0;
+    margin: 10px 0;
 }
 
 /* Animação de corações caindo com fade, iniciando do topo */
@@ -129,4 +134,43 @@ body {
 
 .heart:nth-child(odd) {
     animation-duration: 7s;
+}
+
+/* Media Queries específicas para dispositivos móveis */
+@media screen and (max-width: 768px) {
+    .title {
+        font-size: 2.5em; /* Título ajustado para melhor visualização em dispositivos móveis */
+    }
+
+    .photo-container {
+        gap: 15px; /* Menos espaço entre as imagens */
+    }
+
+    .photo-wrapper {
+        flex: 2 2 40%; /* Cada imagem ocupa toda a largura da tela */
+    }
+
+    .photo {
+        width: 150px;  /* Largura fixa para as imagens */
+        height: 150px; /* Altura fixa para as imagens */
+    }
+
+    .timer {
+        font-size: 1.5em; /* Ajuste no tamanho do timer */
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .title {
+        font-size: 1.2em; /* Título ainda menor em telas muito pequenas */
+    }
+
+    .photo {
+        width: 120px;  /* Ajuste na largura para telas muito pequenas */
+        height: 120px; /* Ajuste na altura para telas muito pequenas */
+    }
+
+    .timer {
+        font-size: 1.2em; /* Ajuste do tamanho do timer */
+    }
 }
